@@ -1,0 +1,18 @@
+<html>
+<head>
+<script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$(function() {
+  var frameAdress = "http://127.0.0.1:1337"
+  var $body = $("body");
+  $body.off("click","#send").on("click","#send",function(){
+    $("#iframe", $body)[0].contentWindow.postMessage($("#msg",$body).val(), frameAdress);
+  });
+});
+</script>
+</head>
+<body>
+<input type="text" id="msg"/><button type="button" id="send">Send</button></br></br>
+<iframe id="iframe" src="http://127.0.0.1:1337/frame.html" height="400" width="400" align="left"/>
+</body>
+</html>
